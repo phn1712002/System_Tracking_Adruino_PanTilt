@@ -1,0 +1,31 @@
+{
+  "CAMERA":{
+    "COM": 1,
+    "flip": 0,
+    "key_stop": "q",
+    "path_font": "./font/arial.ttf"
+  },
+
+  "ADRUINO":{
+    "COM": "COM8",
+    "LINK_1": {
+      "name": "DC1",
+      "pin": 10,
+      "angle_limit": [0, 180]
+    },
+    "LINK_2": {
+      "name": "DC2",
+      "pin": 8,
+      "angle_limit": [0, 90]
+    }
+  },
+
+  "OPTI":{
+    "step_max": 2,
+    "step_slow": 0.1,
+    "er_limit": 240,
+    "region_inf": [0.05, 0.1, 0.3]
+  },
+
+  "delay_ms": 700
+}

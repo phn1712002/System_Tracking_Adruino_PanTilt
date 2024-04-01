@@ -1,0 +1,5 @@
+{
+  "scaleFactor": 1.05,
+  "minSize": [30, 30],
+  "minNeighbors": 5
+}
