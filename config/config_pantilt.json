@@ -7,7 +7,7 @@
   },
 
   "ADRUINO":{
-    "COM": "COM8",
+    "COM": "COM7",
     "LINK_1": {
       "name": "DC1",
       "pin": 10,
@@ -21,11 +21,11 @@
   },
 
   "OPTI":{
-    "step_max": 2,
-    "step_slow": 0.1,
+    "step_max": 0.1,
+    "step_slow": 0.01,
     "er_limit": 240,
     "region_inf": [0.05, 0.1, 0.3]
   },
 
-  "delay_ms": 700
+  "delay_ms": 1000  
 }
