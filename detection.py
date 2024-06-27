@@ -31,11 +31,6 @@ class face_Detection_Haar:
       face = face_ROI[idx_max]
     return face
   
-class face_Detection_YoloV5:
-  def __init__(self) -> None:
-    pass
-
-
 class color_Detection:
   def __init__(self, low_RGB=[161, 155, 84], high_RGB=[179, 255, 255], reverse=True) -> None:
     self.low_RGB = np.array(low_RGB)
