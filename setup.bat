@@ -11,6 +11,7 @@ if exist .conda (
 ) else (
   conda create --yes --prefix ./.conda python=%ver_py%
   conda activate ./.conda
+  python -m pip install --upgrade pip
   pip install -r requirements.txt
   cls
   echo %print_ouput%

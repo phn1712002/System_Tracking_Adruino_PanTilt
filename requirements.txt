@@ -3,4 +3,5 @@ pyfirmata
 pyclean
 numpy
 opencv-python
-jupyter 
+jupyter
+onnxruntime

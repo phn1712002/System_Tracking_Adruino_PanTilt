@@ -4,7 +4,7 @@ from motor import model_RC_Servo_MG995
 from peripheral import Camera
 from optimization import optimization_Control_2Motor
 from tools import delay_microseconds
-from detection import face_Detection_Haar, face_Detection_YoloV5, red_Color_Detection
+from detection import face_Detection_Haar, face_Detection_YoloV5, color_Detection
 
 class pan_Tilt:
   def __init__(self, config_pantilt:Dict={}) -> None:
@@ -94,4 +94,4 @@ class pan_Tilt_Red_Color(pan_Tilt):
                config_detection:Dict={}):
     super().__init__(config_pantilt=config_pantilt)
     self.config_detection = config_detection
-    self.face_detection = red_Color_Detection(**config_detection).detection_one
+    self.face_detection = color_Detection(**config_detection).detection_one
