@@ -1,0 +1,46 @@
+{
+  "CAMERA":{
+    "COM": 1,
+    "flip": 0,
+    "key_stop": "q",
+    "path_font": "./font/arial.ttf"
+  },
+
+  "ADRUINO":{
+    "COM": "COM7",
+    "LINK_1": {
+      "name": "DC1",
+      "pin": 10,
+      "angle_limit": [0, 180]
+    },
+    "LINK_2": {
+      "name": "DC2",
+      "pin": 8,
+      "angle_limit": [0, 90]
+    },
+    "LEADSCREW":{
+      "name": "DC3",
+      "dir_pin": 10,
+      "step_pin": 9,
+      "div_step": 1,
+      "pos_dir": 1
+    },
+    "SWITCH":{
+      "L":{
+        "pin": 0
+      },
+      "R":{
+        "pin": 1
+      }
+    }
+  },
+
+  "OPTI":{
+    "step_max": 0.1,
+    "step_slow": 0.01,
+    "er_limit": 240,
+    "region_inf": [0.05, 0.1, 0.3]
+  },
+
+  "delay_ms": 1000  
+}
