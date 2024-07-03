@@ -33,7 +33,7 @@ class model_RC_Servo_MG995(Motor):
                 self.angle_current = angle_prepare
         return self.angle_current
 
-class Model_17HS3401(Motor):
+class model_17HS3401(Motor):
     def __init__(
         self,
         board: Arduino,

@@ -5,8 +5,8 @@ from peripheral import Camera
 from optimization import optimization_Control_2Motor
 from tools import delay_microseconds
 from detection import face_Detection_Haar, color_Detection
-from motor import Motor
-from switch import Switch
+from motor import Motor, model_17HS3401
+from switch import Switch, Model_2A_Analog
 
 #! Pan tilt
 class pan_Tilt:
@@ -109,42 +109,49 @@ class pan_Tilt_Red_Color(pan_Tilt):
         self.config_detection = config_detection
         self.face_detection = color_Detection(**config_detection).detection_one
 
-
 #! Pan Tilt and Lead Screw
 class leadScrew:
     def __init__(self, motor: Motor, switch_R: Switch, switch_L: Switch) -> None:
-        self.motor = motor  
+        self.motor = motor
         self.switch_R = switch_R
         self.switch_L = switch_L
-    
-    def step(self, angle: float, delay:float):
-      return self.motor.step(angle, delay, self.checkStop)
-  
-    def checkStop(self, angle: float, sign_steps:int):
-        if self.switch_R.checkClick(): 
-            if sign_steps > 0 : return True
-            else: return False
+
+    def step(self, angle: float, delay: float):
+        return self.motor.step(angle, delay, self.checkStop)
+
+    def checkStop(self, angle: float, sign_steps: int):
+        if self.switch_R.checkClick():
+            if sign_steps > 0:
+                return True
+            else:
+                return False
         elif self.switch_L.checkClick():
-            if sign_steps < 0 : return True
-            else: return False
+            if sign_steps < 0:
+                return True
+            else:
+                return False
 
 class pan_Tilt_leadScrew(pan_Tilt):
-  def __init__(self, config_pantilt: Dict = {}) -> None:
-      super().__init__(config_pantilt)  
-      self.lead_screw = leadScrew()
-      self.optimization = None
-      
-  def control_pan_tilt(self):
-    pass
-  
+    def __init__(self, config_pan_titlt_lead_screw: Dict = {}) -> None:
+        super().__init__(config_pan_titlt_lead_screw)
+        self.lead_screw = leadScrew(
+            model_17HS3401(board=self.board, **self.config_adruino["LEADSCREW"]),
+            switch_L=Model_2A_Analog(self.board, **self.config_adruino["SWITCH"]["L"]),
+            switch_R=Model_2A_Analog(self.board, **self.config_adruino["SWITCH"]["R"]),
+        )
+        self.optimization = None
+
+    def control_pan_tilt(self):
+        pass
+
 class pan_Tilt_leadScrew_Haar(pan_Tilt_leadScrew):
     def __init__(
         self,
         path_config_xml: str = "./.model/haarcascades/haarcascade_frontalface_default.xml",
         config_detection: Dict = {},
-        config_pantilt: Dict = {},
+        config_pan_titlt_lead_screw: Dict = {},
     ):
-        super().__init__(config_pantilt=config_pantilt)
+        super().__init__(config_pan_titlt_lead_screw)
         self.path_config_xml = path_config_xml
         self.config_detection = config_detection
         self.face_detection = face_Detection_Haar(
